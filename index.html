@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths</title>
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">   
+
+</head>
+<body>
+    <section class="formContainer">
+        <form class="form">
+            <h1>CALCULAR PORCENTAJE</h1>
+
+            <div class="inputContainer">
+               <label for="precio">PRECIO</label>
+                <input type="number" id="precio"> 
+            </div>
+            
+            <div class="inputContainer">
+                <label for="descuento">DESCUENTO</label>
+                <input placeholder="Debe ser menor a 100" type="number" maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="descuento">
+                <p>%</p>
+            </div>
+            <div class="buttonContainer">
+                <button class="button" type="button">CALCULAR</button>
+                <button class="buttonReset" type="reset">R</button>
+            </div>
+            
+
+            <div>
+                <p class="texto">VALOR FINAL</p>
+                <p class="resultado"></p>
+            </div>
+            
+
+        </form >
+        <form class="formCup">
+            <h1>VALIDAR SUS CUPONES</h1>
+
+            <div class="inputContainerCup">
+               <label for="precioCup">PRECIO</label>
+                <input type="number" id="precioCup"> 
+            </div>
+            
+            <div class="inputContainerCup">
+                <label for="cuponCup">INGRESE SU CUPON</label>
+                <input placeholder="XXXX-XXXX" type="text" id="cuponCup">
+                <p><img src="https://cdn-icons-png.flaticon.com/512/7093/7093748.png" alt="Cupon"></p>
+            </div>
+
+            <div class="buttonContainerCup">
+                <button class="buttonCup" type="button">VALIDAR</button>
+                <button class="buttonResetCup" type="reset">R</button>
+            </div>
+
+            <div>
+                <p class="textoCup">VALOR FINAL</p>
+                <p class="resultadoCup"></p>
+            </div>
+            
+
+        </form>
+    </section>
+    <script src="/main.js"></script>
+</body>
+</html>
