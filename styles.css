@@ -11,7 +11,7 @@ body {
     place-items: center;
     gap: 5%;
     flex-wrap: wrap;
-    background-color: #57b284;
+    background-color: #c3c3c3;
     background-image: url(https://images.vexels.com/media/users/3/141614/isolated/preview/f09c09d7d398ec4e36a637732091a418-circulos-concentricos-vacios.png);
     background-size: 5%;
 }

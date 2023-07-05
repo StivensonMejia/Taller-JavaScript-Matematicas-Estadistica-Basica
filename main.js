@@ -24,6 +24,7 @@ function resultadoDescuento() {
     }
 }
 
+
 /* VALIDAR SUS CUPONES */
 
 const imputPrecioCup = document.querySelector('#precioCup');
@@ -33,27 +34,59 @@ const botonDeAccionCup = document.querySelector('.buttonCup');
 
 botonDeAccionCup.addEventListener('click', resultadoDescuentoCup)
 
-function resultadoDescuentoCup() {
 
-    const Cupon30Descuento = "HTML-0030";
-    const Cupon50Descuento = "HTML-0050";
-    const Cupon70Descuento = "HTML-0070";
+/* Array de objetos el cual contiene los cupones  */
+const listadoDeCupones = [];
+
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0010',
+    descuento: 10,
+});
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0015',
+    descuento: 15,
+});
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0020',
+    descuento: 20,
+});
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0030',
+    descuento: 30,
+});
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0050',
+    descuento: 50,
+});
+listadoDeCupones.push ({
+    nombreCup: 'HTML-0070',
+    descuento: 70,
+});
+
+
+/* Funcion que realiza la validacion de los cupones */
+function resultadoDescuentoCup() {
 
     if (!imputPrecioCup.value || !imputCuponCup.value) {
         imputResultadoCup.innerText = "Ingresa Datos";
         return;
     }
-    else if (Cupon30Descuento == imputCuponCup.value) {
-        const descuento = Number(imputPrecioCup.value) * (100 - 30) / 100;
-        imputResultadoCup.innerText = "$" + descuento;
+
+    /* esta funcion valida que lo escrito por el usuario este en el listado de cupones con ayuda del metodo .find de la const existeElCupon  */
+    function validarSiExisteCupon(elemtenosDelCupon) {
+        return elemtenosDelCupon.nombreCup == imputCuponCup.value;
     }
-    else if (Cupon50Descuento == imputCuponCup.value) {
-        const descuento = Number(imputPrecioCup.value) * (100 - 50) / 100;
-        imputResultadoCup.innerText = "$" + descuento;
-    }
-    else if (Cupon70Descuento == imputCuponCup.value) {
-        const descuento = Number(imputPrecioCup.value) * (100 - 70) / 100;
-        imputResultadoCup.innerText = "$" + descuento;
+
+    /* Metodo .find sirve para filtrar en un array sin necesidad de hacer un ciclo de validacion  */
+    const existeElCupon = listadoDeCupones.find(validarSiExisteCupon)
+
+   /*  Variables para guardar los datos como: precio de prodcuto del usuario (imput de html), valor del descuento que se obtubo por medio de .find (array con objetos) */
+    const precioUsuarioCup = Number(imputPrecioCup.value);
+    const valorDescuentoCuponCup = existeElCupon.descuento;
+    
+    if (existeElCupon) {
+        const nuevoPrecio = precioUsuarioCup * (100 - valorDescuentoCuponCup) / 100;
+        imputResultadoCup.innerText = "$" + nuevoPrecio;
     }
     else {
         imputResultadoCup.innerText = "Cupon Invalido" ;
