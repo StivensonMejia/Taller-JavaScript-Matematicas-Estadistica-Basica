@@ -92,3 +92,33 @@ function resultadoDescuentoCup() {
         imputResultadoCup.innerText = "Cupon Invalido" ;
     }
 }
+
+/* CALCULAR PROMEDIO CICLO FOR*/
+
+function calcularPromedio(lista) {
+
+    let sumaLista = 0;
+
+    for (let i = 0; i < lista.length; i++) {
+        sumaLista = sumaLista + lista[i];
+    }
+
+    const promedio = sumaLista / lista.length;
+    console.log(promedio);
+    return promedio;
+}
+
+/* CALCULAR PROMEDIO METODO REDUCE*/
+
+function calcularPromedioReduce(lista) {
+
+    function sumarTodosLosElementos (valorAcumulado, nuevoValor ) {
+        return valorAcumulado + nuevoValor;
+    }
+
+    const sumaListaReduce = lista.reduce(sumarTodosLosElementos);
+
+    const promedio = sumaListaReduce / lista.length;
+    console.log(promedio);
+    return promedio;
+}
