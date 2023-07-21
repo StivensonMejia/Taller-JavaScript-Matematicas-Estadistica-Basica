@@ -122,3 +122,45 @@ function calcularPromedioReduce(lista) {
     console.log(promedio);
     return promedio;
 }
+
+/* CALCULAR MEDIANA  */
+
+/* El signo % en javascript nos ayuda a saber si un numero es par o impar al hacer una operacion retornado true || False
+
+Ejemplo:
+
+10 % 2 = 5 : esta operacion no tiene decimal por lo tanto nos retornara un False = 0  PAR
+
+11 % 2 = 5.5 : esta operacion tiene decimal por lo tanto nos retornara un true = 1 IMPAR*/
+
+function esPar (lista) {
+    return !(lista.length % 2);
+    /* esto quiere decir que si el resultado (! NO) es true
+    sera Par por lo antes ya citado. */
+}
+
+function esImpar (lista) {
+    return (lista.length % 2);
+    /* Caso contrario la funcion esImpar ya que la funcion por si sola retornara el valor true, el cual indica que el resultado es impar */
+}
+
+function CalcularMediana(lista) {
+
+    const listaEsPar = esPar(lista);
+
+    if (listaEsPar) {
+        const mitadIndexListaParUno = lista.length / 2 - 1;
+        const mitadIndexListaParDos = lista.length / 2;
+
+        const medianaPar = (lista[mitadIndexListaParUno] + lista[mitadIndexListaParDos]) / 2;
+        
+        console.log(lista[mitadIndexListaParUno]);
+        console.log(lista[mitadIndexListaParDos]);
+        return medianaPar + ' mediana par';
+    }
+    else {
+        const mitadIndexListaImpar = Math.floor(lista.length / 2);
+        const medianaImpar = lista[mitadIndexListaImpar];
+        return medianaImpar + ' mediana impar';
+    }
+}
