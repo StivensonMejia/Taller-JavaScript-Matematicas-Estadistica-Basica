@@ -144,9 +144,12 @@ function esImpar (lista) {
     /* Caso contrario la funcion esImpar ya que la funcion por si sola retornara el valor true, el cual indica que el resultado es impar */
 }
 
-function CalcularMediana(lista) {
+function calcularMediana(listaDesordenada) {
 
+    const lista = ordenarLista (listaDesordenada);
     const listaEsPar = esPar(lista);
+
+    console.log(lista);
 
     if (listaEsPar) {
         const mitadIndexListaParUno = lista.length / 2 - 1;
@@ -163,4 +166,22 @@ function CalcularMediana(lista) {
         const medianaImpar = lista[mitadIndexListaImpar];
         return medianaImpar + ' mediana impar';
     }
+}
+
+/* ORDENAR UN ARRAY */
+
+function ordenarLista (listaDesordenada) {
+    /* El metodo SORT funciona de la siguente manera: el metodo compara en un array la posisicion del contenido ejemplo: 
+    12 10 17 el metodo SORT comparara dos valores para determinar si un numeros es mayor o no, se realiza mediante una resta  
+    12 - 10 = 2 el resultado fue POSITIVO por lo que se determina que el numero que esta en pirmera posicion es mayor que el segundo numero (se procede a intercambiar posiciones),
+    Si el resultado es NEGATIVO tambien se intercambiaran posiciones contrario a si el resultado de la resta es 0 el metodo SORT no hara ningun cambio  */
+
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        
+        return valorAcumulado - nuevoValor;
+    }
+
+    const lista = listaDesordenada.sort(ordenarListaSort);
+
+    return lista;
 }
