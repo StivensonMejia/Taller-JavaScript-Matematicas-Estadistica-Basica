@@ -185,3 +185,43 @@ function ordenarLista (listaDesordenada) {
 
     return lista;
 }
+
+/* CALCULAR MODA */
+
+function calcularModa(lista) {
+    const listaCount = {};
+
+    for (let i = 0; i < lista.length; i++) {
+        const elemento = lista[i];
+
+        if (listaCount[elemento]) {
+            listaCount[elemento] += 1;
+            /* la expresion += quiere decir que se sumara el valor acumulado ejemplo: listaCount[elemento] = listaCount[elemento] + 1;  */
+        } else {
+            listaCount[elemento] = 1;
+        }
+    }
+
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimencional(listaArray)
+    const listaMaxNumber = listaOrdenada[listaOrdenada.length - 1]
+
+    const moda = listaMaxNumber[0];
+    return moda;
+
+    /* console.log(listaCount, listaArray, listaOrdenada, listaMaxNumber); */
+}
+
+/* ORDENAR UN ARRAY BIDIMENCIONAL */
+function ordenarListaBidimencional (listaDesordenada) {
+
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        
+        return valorAcumulado[1] - nuevoValor[1];
+    }
+
+    const lista = listaDesordenada.sort(ordenarListaSort);
+
+    return lista;
+}
+
