@@ -149,8 +149,8 @@ PlatziMath.esImpar = function esImpar (lista) {
 
 PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
 
-    const lista = ordenarLista (listaDesordenada);
-    const listaEsPar = esPar(lista);
+    const lista = PlatziMath.ordenarLista (listaDesordenada);
+    const listaEsPar = PlatziMath.esPar(lista);
 
     console.log(lista);
 
