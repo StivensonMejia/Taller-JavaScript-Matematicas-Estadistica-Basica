@@ -93,9 +93,12 @@ function resultadoDescuentoCup() {
     }
 }
 
+/* SUPER CLASE */
+const PlatziMath = {};
+
 /* CALCULAR PROMEDIO CICLO FOR*/
 
-function calcularPromedio(lista) {
+PlatziMath.calcularPromedio = function calcularPromedio(lista) {
 
     let sumaLista = 0;
 
@@ -110,7 +113,7 @@ function calcularPromedio(lista) {
 
 /* CALCULAR PROMEDIO METODO REDUCE*/
 
-function calcularPromedioReduce(lista) {
+PlatziMath.calcularPromedioReduce = function calcularPromedioReduce(lista) {
 
     function sumarTodosLosElementos (valorAcumulado, nuevoValor ) {
         return valorAcumulado + nuevoValor;
@@ -133,18 +136,18 @@ Ejemplo:
 
 11 % 2 = 5.5 : esta operacion tiene decimal por lo tanto nos retornara un true = 1 IMPAR*/
 
-function esPar (lista) {
+PlatziMath.esPar = function esPar (lista) {
     return !(lista.length % 2);
     /* esto quiere decir que si el resultado (! NO) es true
     sera Par por lo antes ya citado. */
 }
 
-function esImpar (lista) {
+PlatziMath.esImpar = function esImpar (lista) {
     return (lista.length % 2);
     /* Caso contrario la funcion esImpar ya que la funcion por si sola retornara el valor true, el cual indica que el resultado es impar */
 }
 
-function calcularMediana(listaDesordenada) {
+PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
 
     const lista = ordenarLista (listaDesordenada);
     const listaEsPar = esPar(lista);
@@ -170,7 +173,7 @@ function calcularMediana(listaDesordenada) {
 
 /* ORDENAR UN ARRAY */
 
-function ordenarLista (listaDesordenada) {
+PlatziMath.ordenarLista = function ordenarLista (listaDesordenada) {
     /* El metodo SORT funciona de la siguente manera: el metodo compara en un array la posisicion del contenido ejemplo: 
     12 10 17 el metodo SORT comparara dos valores para determinar si un numeros es mayor o no, se realiza mediante una resta  
     12 - 10 = 2 el resultado fue POSITIVO por lo que se determina que el numero que esta en pirmera posicion es mayor que el segundo numero (se procede a intercambiar posiciones),
@@ -188,7 +191,7 @@ function ordenarLista (listaDesordenada) {
 
 /* CALCULAR MODA */
 
-function calcularModa(lista) {
+PlatziMath.calcularModa = function calcularModa(lista) {
     const listaCount = {};
 
     for (let i = 0; i < lista.length; i++) {
@@ -213,7 +216,7 @@ function calcularModa(lista) {
 }
 
 /* ORDENAR UN ARRAY BIDIMENCIONAL */
-function ordenarListaBidimencional (listaDesordenada) {
+PlatziMath.ordenarListaBidimencional = function ordenarListaBidimencional (listaDesordenada) {
 
     function ordenarListaSort(valorAcumulado, nuevoValor) {
         
@@ -225,3 +228,24 @@ function ordenarListaBidimencional (listaDesordenada) {
     return lista;
 }
 
+
+/* Ejercicio de clase que debo estudiar  */
+const obj = {
+    123: 'Juanito Alcachofa',
+    456: 'Juanita Alcaparra',
+};
+
+function solution(obj) {
+
+    const nuevoArrayObj = Object.entries(obj);
+    const nuevoObj = [];
+
+    for (let i of nuevoArrayObj) {
+        nuevoObj.push({
+            id: i[0],
+            name: i[1]
+        })
+    }
+    return nuevoObj;
+
+}
