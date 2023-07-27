@@ -152,8 +152,6 @@ PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
     const lista = PlatziMath.ordenarLista (listaDesordenada);
     const listaEsPar = PlatziMath.esPar(lista);
 
-    console.log(lista);
-
     if (listaEsPar) {
         const mitadIndexListaParUno = lista.length / 2 - 1;
         const mitadIndexListaParDos = lista.length / 2;
@@ -162,12 +160,12 @@ PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
         
         console.log(lista[mitadIndexListaParUno]);
         console.log(lista[mitadIndexListaParDos]);
-        return medianaPar + ' mediana par';
+        return medianaPar;
     }
     else {
         const mitadIndexListaImpar = Math.floor(lista.length / 2);
         const medianaImpar = lista[mitadIndexListaImpar];
-        return medianaImpar + ' mediana impar';
+        return medianaImpar;
     }
 }
 
