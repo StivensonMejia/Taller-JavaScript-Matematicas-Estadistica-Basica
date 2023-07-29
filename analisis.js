@@ -50,3 +50,35 @@ function proyeccionPorPersona(nombrePersona) {
     console.log(Math.round(nuevoSalario));
     console.log(medianaPorcentajesCrecimiento);
 }
+
+const empresas = {};
+
+for (persona of salarios) {
+    for (trabajo of persona.trabajos) {
+        if (!empresas[trabajo.empresa]) {
+            empresas[trabajo.empresa] = {};
+        }
+
+        if (!empresas[trabajo.empresa][trabajo.year]) {
+            empresas[trabajo.empresa][trabajo.year] = [];
+        }
+
+        empresas[trabajo.empresa][trabajo.year].push(trabajo.salario);
+    }
+
+    
+}
+
+console.log({empresas});
+
+function medianaEmpresaYear(nombreEmpresa, year) {
+    if (!empresas[nombreEmpresa]) {
+        console.warn('La empresa no existe.');
+    }
+    else if (!empresas[nombreEmpresa][year]) {
+        console.warn('La empresa no dio salarios ese año.');
+    }
+    else {
+        return PlatziMath.calcularMediana(empresas[nombreEmpresa][year]);
+    }
+}

@@ -158,8 +158,8 @@ PlatziMath.calcularMediana = function calcularMediana(listaDesordenada) {
 
         const medianaPar = (lista[mitadIndexListaParUno] + lista[mitadIndexListaParDos]) / 2;
         
-        console.log(lista[mitadIndexListaParUno]);
-        console.log(lista[mitadIndexListaParDos]);
+        console.log(lista[mitadIndexListaParUno] + ' Mitad 1');
+        console.log(lista[mitadIndexListaParDos] + ' Mitad 2');
         return medianaPar;
     }
     else {
