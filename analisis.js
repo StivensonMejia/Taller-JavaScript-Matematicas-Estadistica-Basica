@@ -51,7 +51,11 @@ function proyeccionPorPersona(nombrePersona) {
     console.log(medianaPorcentajesCrecimiento);
 }
 
+/* ANALISIS EMPRESAS */
+
 const empresas = {};
+
+/* Ciclo for creado para para reformular la base de datos de salarios y reestructurarla por empresas, año y salarios de ese año en la const empresas */
 
 for (persona of salarios) {
     for (trabajo of persona.trabajos) {
@@ -82,3 +86,40 @@ function medianaEmpresaYear(nombreEmpresa, year) {
         return PlatziMath.calcularMediana(empresas[nombreEmpresa][year]);
     }
 }
+
+function proyeccionPorEmpresa(nombreEmpresa) {
+    if (!empresas[nombreEmpresa]) {
+        console.warn('La empresa no existe.');
+    }
+    else {
+        const empresaYears = Object.keys(empresas[nombreEmpresa]);
+        const listaMedianaYears = empresaYears.map((year) => { 
+            
+            return medianaEmpresaYear(nombreEmpresa, year)
+        });
+
+        console.log(empresaYears);
+        console.log(listaMedianaYears);
+
+        let porcentajesCrecimiento = [];
+
+        for (let i = 1; i < listaMedianaYears.length; i++) {
+
+            const medianaActual = listaMedianaYears[i];
+            const medianaPasada = listaMedianaYears[i - 1];
+            const crecimiento = medianaActual - medianaPasada;
+            const porcentajeCrecimiento = crecimiento / medianaPasada;
+            porcentajesCrecimiento.push(porcentajeCrecimiento)
+        }
+
+        const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
+
+        const ultimaMediana = listaMedianaYears[listaMedianaYears.length -1];
+        const aumento = ultimaMediana * medianaPorcentajesCrecimiento;
+        const nuevaMediana = ultimaMediana + aumento;
+
+        console.log(Math.round(nuevaMediana));
+        console.log('el procentaje de crecimiento es de: ' + medianaPorcentajesCrecimiento);
+    }
+
+}  
