@@ -123,3 +123,30 @@ function proyeccionPorEmpresa(nombreEmpresa) {
     }
 
 }  
+
+/* ANALISIS GENERAL */
+
+function medianaGeneral() {
+    const listaMedianas = salarios.map(
+        persona => medianaPorPersona(persona.name)
+    );
+
+    const mediana = PlatziMath.calcularMediana(listaMedianas);
+    return mediana;
+}
+
+function medianaTop10() {
+    const listaMedianas = salarios.map(
+        persona => medianaPorPersona(persona.name)
+    );
+
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+
+    const cantidad = listaMedianas.length / 10;
+    const limite = listaMedianas.length - cantidad;
+
+    const top10 = medianasOrdenadas.slice(limite , medianasOrdenadas.length);
+
+    const mediatop10 = PlatziMath.calcularMediana(top10);
+    return mediatop10;
+}
